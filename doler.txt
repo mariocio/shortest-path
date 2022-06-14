@@ -1,0 +1,95 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int q;
+	cout<<"quanti citta vuoi mettere ? ";
+	cin>>q;
+	int w[100];
+	int t[100][100];
+	for(int y=0;y<q;y++)
+		{
+			w[y]=0;
+		}
+	int sum=0;
+    int mat[100][100];
+	for(int x=0;x<q;x++)
+	{
+		cout<<"noi siamo nella "<<x+1<<" citta"<<endl;
+		for(int y=0;y<q-1;y++)
+		{
+			cout<<"metti la distanza tra "<<x+1<<" citta e la citta vicina";
+			cin>>mat[x][y];
+			while(mat[x][y]==0)
+			{
+				cout<<"impossibile,rimetti";
+			    cin>>mat[x][y];	
+			}
+			w[x]=w[x]+mat[x][y];
+		}
+	}
+	cout<<endl;
+	
+	int e=0;
+	int r=0;
+	
+	for(int y=0;y<q;y++)
+    {
+       for(int x=0;x<q;x++)
+		{
+			if(w[y]>w[x])
+			{
+				e++;
+			}
+		}	
+	   if(e==q-1){
+		r=y;
+		cout<<"la somma piu grande = "<<w[r]<<"nel matrice numero(x)= "<<r<<endl;
+		e=0;
+		 
+	}
+	   else
+		   e=0;
+	}
+	//dshfbvaksvbandd
+	int u=0;
+	for(int y=0;y<q-1;y++)
+    {
+       for(int x=0;x<q-1;x++)
+		{
+			if(mat[r][y]<mat[r][x])
+			{
+				e++;
+			}
+		}	
+	   if(e==q-2){
+		cout<<"il numero piu piccolo = "<<mat[r][y];
+		sum=sum+mat[r][y];   
+		u=y;
+        cout<<"si torva nell y = "<<u<<endl;
+		e=0;
+	}
+	   else
+		   e=0;
+	}
+	int i=0;
+	for(int x=0;x<q;x++)
+	{
+		for(int y=0;y<q-1;y++)
+		{
+			if( mat[r][u]==mat[x][y]&&r!=x)
+			{
+				cout<<"questo numero si trova anche nell x = "<<x;
+				i=x;
+			} 
+		}
+	}
+	   
+///////
+	
+	system("pause");
+	return 0;
+}
+
